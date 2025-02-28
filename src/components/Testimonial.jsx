@@ -1,5 +1,8 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
+import profileImg1 from "C:/website/src/assets/profile_img_1.png";
+import profileImg2 from "C:/website/src/assets/profile_img_2.png";
+import profileImg3 from "C:/website/src/assets/profile_img_3.png";
 
 const testimonials = [
   {
@@ -8,7 +11,7 @@ const testimonials = [
     position: "CEO at XYZ Corp",
     review: "Exceptional service! Delta Engineering transformed our operations.",
     stars: 5,
-    image: "/client1.jpg",
+    image: profileImg1,
   },
   {
     id: 2,
@@ -16,7 +19,7 @@ const testimonials = [
     position: "Project Manager at ABC Ltd",
     review: "Highly professional team with outstanding quality work!",
     stars: 4,
-    image: "/client2.jpg",
+    image: profileImg2,
   },
   {
     id: 3,
@@ -24,41 +27,26 @@ const testimonials = [
     position: "CTO at Innovatech",
     review: "Their solutions streamlined our workflow seamlessly.",
     stars: 5,
-    image: "/client3.jpg",
-  },
-  {
-    id: 4,
-    name: "Emily Davis",
-    position: "Director at Future Solutions",
-    review: "Reliable, innovative, and a pleasure to work with!",
-    stars: 4,
-    image: "/client4.jpg",
-  },
-  {
-    id: 5,
-    name: "Chris Wilson",
-    position: "Manager at Global Systems",
-    review: "Impressed with their technical expertise and support.",
-    stars: 5,
-    image: "/client5.jpg",
-  },
+    image: profileImg3,
+  }
 ];
 
 const TestimonialSlider = () => {
-  const sliderRef = useRef(null);
   const controls = useAnimation();
+  const sliderRef = useRef(null);
 
-  // Function to loop infinitely
-  const startAutoScroll = async () => {
-    while (true) {
-      await controls.start({ x: "-100%", transition: { duration: 6, ease: "linear" } });
-      sliderRef.current.appendChild(sliderRef.current.firstChild);
-      controls.set({ x: 0 });
-    }
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      controls.start({ x: "-100%", transition: { duration: 10, ease: "linear" } }).then(() => {
+        controls.set({ x: 0 });
+      });
+    }, 10500);
+
+    return () => clearInterval(interval);
+  }, [controls]);
 
   return (
-    <div className="overflow-hidden py-10 bg-gray-100 relative" id="Testomonial">
+    <div className="overflow-hidden py-10 bg-gray-100 relative" id="Testimonial">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-gray-800">
         What Our Clients Say
       </h2>
@@ -67,8 +55,8 @@ const TestimonialSlider = () => {
         ref={sliderRef}
         className="flex gap-6 cursor-grab"
         animate={controls}
-        onMouseEnter={() => controls.stop()} // Stop animation on hover
-        onMouseLeave={startAutoScroll} // Restart animation on mouse leave
+        onMouseEnter={() => controls.stop()} 
+        onMouseLeave={() => controls.start({ x: "-100%", transition: { duration: 10, ease: "linear" } })} 
         drag="x"
         dragConstraints={{ left: -500, right: 500 }}
         whileTap={{ cursor: "grabbing" }}

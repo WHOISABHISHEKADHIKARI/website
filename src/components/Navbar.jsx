@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { assets } from "../assets/assets"; 
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { assets } from "../assets/assets";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,21 +7,32 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
+    document.body.classList.toggle("overflow-hidden", !isMenuOpen); // Prevent scrolling when open
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
+        document.body.classList.remove("overflow-hidden");
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        document.body.classList.remove("overflow-hidden");
       }
     };
 
     if (isMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleEscape);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
     };
   }, [isMenuOpen]);
 
@@ -61,92 +71,84 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#Testomonial"
+                href="#Testimonial"
                 className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
               >
                 Testimonials
               </a>
             </li>
-            <li>
-              <Link
-                to="/career" // Use Link for navigation
-                className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
-              >
-                Career
-              </Link>
-            </li>
           </ul>
         </nav>
 
-        {/* Contact Button */}
+        {/* ✅ Fixed: "Get in Touch" Button */}
         <a
           href="#contact"
-          className="hidden md:inline-block bg-white px-8 py-2 border border-gray-300 rounded-md hover:bg-gray-100 transition duration-300"
+          className="hidden md:inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-lg"
           aria-label="Contact us"
         >
-          Contact us
+          Get in Touch
         </a>
 
         {/* Mobile Menu Icon */}
-        <img
-          src={assets.menu_icon}
+        <button
           className="md:hidden w-7 cursor-pointer menu-icon"
-          alt="Menu Icon"
           onClick={toggleMenu}
-          role="button"
-          tabIndex={0}
           aria-label="Open menu"
-        />
+        >
+          <img src={assets.menu_icon} alt="Menu Icon" />
+        </button>
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div
-          ref={menuRef}
-          id="mobileMenu"
-          className="md:hidden absolute top-16 left-0 w-full bg-black text-white py-4 px-6 flex flex-col gap-4 z-20"
+      <div
+        ref={menuRef}
+        id="mobileMenu"
+        className={`fixed inset-0 bg-black text-white py-6 px-6 flex flex-col gap-6 z-20 transform transition-transform duration-300 ${
+          isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
+        }`}
+        aria-hidden={!isMenuOpen}
+      >
+        {/* Close Button */}
+        <button
+          className="text-white absolute top-4 right-4 text-2xl z-30"
+          onClick={toggleMenu}
+          aria-label="Close menu"
         >
-          {/* Close Button */}
-          <button
-            className="text-white absolute top-4 right-4 z-30"
-            onClick={toggleMenu}
-            aria-label="Close menu"
-          >
-            <span className="text-2xl">×</span>
-          </button>
+          ×
+        </button>
 
-          {/* Mobile Menu Links */}
-          <a
-            href="#Header"
-            className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
-          >
-            Home
-          </a>
-          <a
-            href="#About"
-            className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
-          >
-            About
-          </a>
-          <a
-            href="#Project"
-            className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
-          >
-            Projects
-          </a>
-          <Link
-            to="/career" // Use Link for navigation
-            className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
-          >
-            Career
-          </Link>
+        {/* Mobile Menu Links */}
+        <a
+          href="#Header"
+          className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
+          onClick={toggleMenu}
+        >
+          Home
+        </a>
+        <a
+          href="#About"
+          className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
+          onClick={toggleMenu}
+        >
+          About
+        </a>
+        <a
+          href="#Project"
+          className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
+          onClick={toggleMenu}
+        >
+          Projects
+        </a>
 
-          {/* Contact Button */}
-          <button className="bg-white text-black px-8 py-2 rounded-md hover:bg-gray-100 transition duration-300">
-            Contact Us
-          </button>
-        </div>
-      )}
+        {/* ✅ Fixed: "Get in Touch" Button in Mobile Menu */}
+        <a
+          href="#contact"
+          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-lg text-center"
+          onClick={toggleMenu}
+        >
+          Get in Touch
+        </a>
+      </div>
     </div>
   );
 };
