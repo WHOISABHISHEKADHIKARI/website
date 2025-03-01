@@ -14,7 +14,7 @@ const Footer = () => {
             alt="Delta Engineering Logo"
             className="w-24 h-auto mb-4"
           />
-          <h3 className="text-xl font-bold text-blue-400">Delta Engineering</h3>
+          <h3 className="text-xl font-bold text-blue-400">Delta Engineering Solution</h3>
           <p className="text-sm mt-2">
             Powering Projects, Fueling Success since 2015.
           </p>

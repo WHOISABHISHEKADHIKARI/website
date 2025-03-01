@@ -7,7 +7,7 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
-    document.body.classList.toggle("overflow-hidden", !isMenuOpen); // Prevent scrolling when open
+    document.body.classList.toggle("overflow-hidden", !isMenuOpen);
   };
 
   useEffect(() => {
@@ -80,13 +80,13 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* ✅ Fixed: "Get in Touch" Button */}
+        {/* ✅ "Call Now" Button for Desktop Only */}
         <a
-          href="#contact"
-          className="hidden md:inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-lg"
-          aria-label="Contact us"
+          href="tel:+9779845598087"
+          className="hidden sm:inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300"
+          aria-label="Contact us now"
         >
-          Get in Touch
+          Call Now
         </a>
 
         {/* Mobile Menu Icon */}
@@ -139,14 +139,21 @@ const Navbar = () => {
         >
           Projects
         </a>
-
-        {/* ✅ Fixed: "Get in Touch" Button in Mobile Menu */}
         <a
-          href="#contact"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-lg text-center"
+          href="#Testimonial"
+          className="cursor-pointer font-semibold text-white hover:underline transition-all duration-300"
           onClick={toggleMenu}
         >
-          Get in Touch
+          Testimonials
+        </a>
+
+        {/* Mobile Call Now Button */}
+        <a
+          href="tel:+9779845598087"
+          className="block w-full text-center bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-300 mt-4"
+          aria-label="Call now"
+        >
+          Call Now
         </a>
       </div>
     </div>

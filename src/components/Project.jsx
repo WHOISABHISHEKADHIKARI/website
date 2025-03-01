@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { assets } from "../assets/assets"; // Assuming you have images stored in assets
 
-const Projects = () => {
+const Project = () => {
   // State to track which project is expanded
   const [expandedProject, setExpandedProject] = useState(null);
 
@@ -145,4 +145,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Project;
