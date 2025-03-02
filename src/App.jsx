@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import About from "./components/About";
 import Project from "./components/Project";
 import Testimonial from "./components/Testimonial";
-import ContactUs from "./components/ContactUs"; 
+import ContactUs from "./components/Contactus"; 
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop"; // Floating button
 
