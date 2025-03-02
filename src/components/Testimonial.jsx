@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
-import profileImg1 from "C:/website/src/assets/profile_img_1.png";
-import profileImg2 from "C:/website/src/assets/profile_img_2.png";
-import profileImg3 from "C:/website/src/assets/profile_img_3.png";
+import profileImg1 from "../assets/profile_img_1.png";
+import profileImg2 from "../assets/profile_img_2.png";
+import profileImg3 from "../assets/profile_img_3.png";
+
+
 
 const testimonials = [
   {
