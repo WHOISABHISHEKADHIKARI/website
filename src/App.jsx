@@ -7,14 +7,12 @@ import Project from "./components/Project";
 import Testimonial from "./components/Testimonial";
 import ContactUs from "./components/Contactus"; 
 import Footer from "./components/Footer";
-import BackToTop from "./components/BackToTop"; // Floating button
-
+import BackToTop from "./components/BackToTop"; 
 const App = () => {
   return (
     <Router>
       <Navbar />
-      <BackToTop /> {/* Floating icon will be visible on all pages */}
-
+      <BackToTop /> 
       <Routes>
         <Route path="/" element={<><Header /><About /><Project /><Testimonial /><ContactUs /></>} />
         <Route path="/about" element={<About />} />
