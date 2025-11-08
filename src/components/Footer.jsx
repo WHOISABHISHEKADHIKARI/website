@@ -114,14 +114,22 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="mt-10 border-t border-gray-700 pt-4 text-center text-sm">
         <p>
-          &copy; {new Date().getFullYear()}{" "}
+          © {new Date().getFullYear()}{" "}
           <span className="text-blue-400 font-medium">
-            Delta Engineering Solution
+            Hash tagWeb Solutions
           </span>
           . All rights reserved.
         </p>
         <p className="text-gray-400 mt-1 text-xs">
-          Designed & Developed by Delta Engineering Team
+          Designed & Developed by Hashtag Web Solutions |{" "}
+          <a
+            href="https://hashtagweb.com.np/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:underline"
+          >
+            #HashtagWebSolutions
+          </a>
         </p>
       </div>
     </footer>
