@@ -118,6 +118,12 @@ const Footer = () => {
           <span className="text-blue-400 font-medium">
             Hash tagWeb Solutions
           </span>
+             <a
+            href="https://hashtagweb.com.np/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:underline"
+          >
           . All rights reserved.
         </p>
         <p className="text-gray-400 mt-1 text-xs">
