@@ -115,26 +115,17 @@ const Footer = () => {
       <div className="mt-10 border-t border-gray-700 pt-4 text-center text-sm">
         <p>
           © {new Date().getFullYear()}{" "}
-          <span className="text-blue-400 font-medium">
-            Hash tagWeb Solutions
-          </span>
-             <a
-            href="https://hashtagweb.com.np/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:underline"
-          >
-          . All rights reserved.
+          <span className="text-blue-400 font-medium">Delta Engineering Solution</span>. All rights reserved.
         </p>
         <p className="text-gray-400 mt-1 text-xs">
-          Designed & Developed by Hashtag Web Solutions |{" "}
+          Website designed and developed by{" "}
           <a
             href="https://hashtagweb.com.np/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:underline"
           >
-            #HashtagWebSolutions
+            Hashtag Web Solutions
           </a>
         </p>
       </div>
